@@ -27,7 +27,12 @@ centroids = zeros(K, n);
 %
 
 
-
+for i = 1:K
+  index = idx==i;
+  num = sum(index);
+  cluster = X .* repmat(index, 1, n);
+  centroids(i, :) = sum(cluster) ./ num;
+end
 
 
 

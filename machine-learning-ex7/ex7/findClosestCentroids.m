@@ -21,7 +21,12 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
+for i = 1:rows(X)
+  points = repmat(X(i, :), K, 1);
+  distance = sum((points - centroids).^2, 2);
+  [_, centroid_index] = min(distance);
+  idx(i) = centroid_index;
+end  
 
 
 
